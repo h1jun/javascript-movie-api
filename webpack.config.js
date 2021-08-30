@@ -5,6 +5,7 @@ module.exports = {
     mode: "development",
     entry: {
         index: "./src/js/index.js",
+        router: "./src/js/router.js",
     },
     output: {
         path: path.resolve(__dirname, "public"),
@@ -17,6 +18,15 @@ module.exports = {
                 use: ['style-loader', 'css-loader', "postcss-loader"],
             },
         ],
+    },
+    devServer: {
+        port: 9000,
+        proxy: {
+          '/api': {
+            target: 'domain.com',
+            changeOrigin: true
+          }
+        }
     },
     plugins: [
         new HtmlWebpackPlugin({
