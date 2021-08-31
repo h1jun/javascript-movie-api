@@ -1,11 +1,5 @@
-import { todayMovieRender } from "./views/todayMovieView.js";
-import { genreRender } from "./views/homeMainView.js";
-
-async function mainRouter() {
-    await todayMovieRender();
-    genreRender();
+const setMovieDetailPath = (pathName, movieId) => {
+    history.pushState({ }, pathName, window.location.origin + pathName + '/' + movieId)
 }
 
-mainRouter();
-
-export { mainRouter }
+export { setMovieDetailPath }

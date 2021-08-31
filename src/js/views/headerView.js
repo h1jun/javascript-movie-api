@@ -23,6 +23,4 @@ const headerRender = () => {
     document.querySelector('#root').innerHTML = headerTemplate;
 }
 
-headerRender();
-
 export { headerRender }
