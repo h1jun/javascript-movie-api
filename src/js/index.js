@@ -19,7 +19,7 @@ const initHome = async () => {
         genreRender();
     }   
 
-    moreMoiveList()
+    moreMoiveDetail()
 }
 
 
@@ -27,7 +27,7 @@ window.onload = async (event) => {
     await initHome()
 }
 
-function moreMoiveList() {
+function moreMoiveDetail() {
     const moreMovie = document.querySelector('.moremovie');
     
     moreMovie.addEventListener('click', (event) => {
