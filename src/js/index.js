@@ -1,49 +1,28 @@
 import "tailwindcss/tailwind.css"
-import { headerRender } from "./views/headerView.js";
-import { todayMovieRender } from "./views/todayMovieView.js";
-import { genreRender } from "./views/homeMainView.js";
-import detailTest from "./views/movieDetailView.js";
-import { setMovieDetailPath } from "./router.js";
-
+import { headerRender } from "./home/headerView.js";
+import { initialRoutes, setHistoryPath } from "./router.js";
+import detailTest from "./detail/movieDetailView.js";
 
 headerRender();
 
 const main = document.createElement('main');
 document.querySelector('#root').append(main);
 
-const initHome = async () => {
-    document.querySelector('main').innerHTML = '';
 
-    if (location.pathname === '/') {
-        await todayMovieRender();
-        genreRender();
-    }   
-
-    moreMoiveDetail()
+window.onload = async () => {
+    await initialRoutes(main);
+    await test();
 }
 
+function test() {
+    const handleDetail = document.querySelectorAll(".movie-detail");
+ 
+    handleDetail.forEach(element => {
+        element.addEventListener("click", (event) =>  {
+            const pathName = event.currentTarget.getAttribute("route")
+            const movieId = event.currentTarget.id;
 
-window.onload = async (event) => {
-    await initHome()
-}
-
-function moreMoiveDetail() {
-    const moreMovie = document.querySelector('.moremovie');
-    
-    moreMovie.addEventListener('click', (event) => {
-        const pathName = event.target.getAttribute("route");
-        const movieId = event.target.getAttribute("id");
-        setMovieDetailPath(pathName, movieId);
-        detailTest();
+            setHistoryPath(pathName, main, movieId);
+        })
     });
 }
-
-window.addEventListener('popstate', async () => {
-    if (location.pathname === '/') {
-        await initHome();
-    } else if (location.pathname.split('/')[1] === 'detail') {
-        await detailTest();
-    }
-    
-});
-

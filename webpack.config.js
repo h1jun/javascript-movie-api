@@ -9,7 +9,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, "public"),
-        filename: '[name].js'
+        filename: '[name].js'   
     },
     module: {
         rules: [
@@ -20,19 +20,20 @@ module.exports = {
         ],
     },
     devServer: {
+        historyApiFallback: true,
         port: 9000,
         proxy: {
-          '/api': {
-            target: 'domain.com',
-            changeOrigin: true
-          }
-        }
+            '/api': {
+                target: 'domain.com',
+                changeOrigin: true
+            }
+        },
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: "./src/index.html",
             filename: './index.html',
-            chunks:['index'] 
+            chunks: ['index']
         })
     ],
 }
