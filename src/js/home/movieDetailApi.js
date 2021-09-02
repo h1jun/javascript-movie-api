@@ -15,8 +15,7 @@ async function getData() {
     }
 };
 
-async function getDetail() {
-    const movieId = await getData();
+async function getDetail(movieId) {
     try {
         const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=ko`);
         return response.data;

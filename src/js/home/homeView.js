@@ -2,7 +2,8 @@ import { getData, getDetail } from "./movieDetailApi.js";
 import { recoMoiveRender } from "./recoMovie.js";
 
 async function homeRender() {
-    const detail = await getDetail();
+    const getMovieId = await getData();
+    const detail = await getDetail(getMovieId);
     const picFullPath = `https://image.tmdb.org/t/p/original/${detail.backdrop_path}`; 
 
     const todayMovieTemplate = `

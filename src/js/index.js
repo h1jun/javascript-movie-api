@@ -1,7 +1,7 @@
 import "tailwindcss/tailwind.css"
 import { headerRender } from "./home/headerView.js";
-import { initialRoutes, setHistoryPath } from "./router.js";
-import detailTest from "./detail/movieDetailView.js";
+import { initialRoutes, setHistoryPath, handleMovieClick } from "./router.js";
+import movieDetail from "./detail/movieDetailView.js";
 
 headerRender();
 

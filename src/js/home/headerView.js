@@ -2,8 +2,8 @@ const headerRender = () => {
     const headerTemplate = `
         <header class="my-0 mx-auto  w-90vw xl:w-1200">
             <div class="flex justify-between h-7vh items-center">
-                <div class="text-2xl font-semibold">
-                    <a href="#">Movie</a>
+                <div class="text-2xl font-semibold home" route="/">
+                    <a href="/">Movie</a>
                 </div>
                 <div class="flex text-2xl">
                     <div>
